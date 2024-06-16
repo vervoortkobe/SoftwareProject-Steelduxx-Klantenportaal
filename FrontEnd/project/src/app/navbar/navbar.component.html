@@ -1,0 +1,368 @@
+<header class="antialiased">
+  <nav
+    class="navbar-background bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800"
+  >
+    <div class="flex flex-wrap justify-between items-center">
+      <div class="flex justify-start items-center">
+        <a href="#" class="flex mr-4">
+          <img
+            src="/assets/img/logo-white.svg"
+            class="ml-3 mr-3 h-12"
+            alt="Steelduxx Logo"
+          />
+        </a>
+      </div>
+      <div class="flex items-center lg:order-2">
+        <div
+          class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+          id="apps-dropdown"
+        >
+          <div
+            class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            Apps
+          </div>
+          <div class="grid grid-cols-3 gap-4 p-4">
+            <a
+              href="/requests"
+              class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 19"
+              >
+                <path
+                  d="M14.5 0A3.987 3.987 0 0 0 11 2.1a4.977 4.977 0 0 1 3.9 5.858A3.989 3.989 0 0 0 14.5 0ZM9 13h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"
+                />
+                <path
+                  d="M5 19h10v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2ZM5 7a5.008 5.008 0 0 1 4-4.9 3.988 3.988 0 1 0-3.9 5.859A4.974 4.974 0 0 1 5 7Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm5-1h-.424a5.016 5.016 0 0 1-1.942 2.232A6.007 6.007 0 0 1 17 17h2a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5ZM5.424 9H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h2a6.007 6.007 0 0 1 4.366-5.768A5.016 5.016 0 0 1 5.424 9Z"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Requests
+              </div>
+            </a>
+            <a
+              href="/inbox"
+              class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783ZM6 2h6a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2Zm7 5H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Z"
+                />
+                <path
+                  d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Inbox
+              </div>
+            </a>
+            <a
+              href="/profile"
+              class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Profile
+              </div>
+            </a>
+            <a
+              href="/settings"
+              class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M18 7.5h-.423l-.452-1.09.3-.3a1.5 1.5 0 0 0 0-2.121L16.01 2.575a1.5 1.5 0 0 0-2.121 0l-.3.3-1.089-.452V2A1.5 1.5 0 0 0 11 .5H9A1.5 1.5 0 0 0 7.5 2v.423l-1.09.452-.3-.3a1.5 1.5 0 0 0-2.121 0L2.576 3.99a1.5 1.5 0 0 0 0 2.121l.3.3L2.423 7.5H2A1.5 1.5 0 0 0 .5 9v2A1.5 1.5 0 0 0 2 12.5h.423l.452 1.09-.3.3a1.5 1.5 0 0 0 0 2.121l1.415 1.413a1.5 1.5 0 0 0 2.121 0l.3-.3 1.09.452V18A1.5 1.5 0 0 0 9 19.5h2a1.5 1.5 0 0 0 1.5-1.5v-.423l1.09-.452.3.3a1.5 1.5 0 0 0 2.121 0l1.415-1.414a1.5 1.5 0 0 0 0-2.121l-.3-.3.452-1.09H18a1.5 1.5 0 0 0 1.5-1.5V9A1.5 1.5 0 0 0 18 7.5Zm-8 6a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Settings
+              </div>
+            </a>
+            <a
+              href="/orders"
+              class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 16"
+              >
+                <path
+                  d="M19 0H1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1ZM2 6v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6H2Zm11 3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0h2a1 1 0 0 1 2 0v1Z"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Orders
+              </div>
+            </a>
+            <a
+              (click)="logout()"
+              class="logout block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
+            >
+              <svg
+                class="mx-auto mb-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"
+                />
+              </svg>
+              <div class="text-sm font-medium text-gray-900 dark:text-white">
+                Logout
+              </div>
+            </a>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="flex mx-0.5 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+          id="user-menu-button"
+          aria-expanded="false"
+          data-dropdown-toggle="dropdown"
+        >
+          <span class="sr-only">Open user menu</span>
+          <img
+            class="w-8 h-8 rounded-full"
+            src="/assets/img/default_pfp.png"
+            alt="user photo"
+          />
+        </button>
+        <!-- Dropdown menu -->
+        <div
+          class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+          id="dropdown"
+        >
+          <div *ngIf="account != null">
+            <div class="py-3 px-4">
+              <span
+                class="block text-sm font-semibold text-gray-900 dark:text-white"
+                >{{
+                  account.accountInformation != null
+                    ? account.accountInformation.company_name
+                    : "NO COMPANY"
+                }}</span
+              >
+              <span
+                class="block text-sm text-gray-500 truncate dark:text-gray-400"
+                >{{ account.email }}</span
+              >
+            </div>
+            <ul
+              class="hidden py-1 text-gray-500 dark:text-gray-400"
+              aria-labelledby="dropdown"
+            >
+              <li>
+                <a
+                  href="/profile"
+                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                  >My profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/settings"
+                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                  >Account settings</a
+                >
+              </li>
+            </ul>
+            <ul
+              class="py-1 text-gray-500 dark:text-gray-400"
+              aria-labelledby="dropdown"
+            >
+              <li>
+                <a
+                  (click)="logout()"
+                  class="logout block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Sign out</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav
+    id="toggleMobileMenu"
+    class="hidden bg-white border-b border-gray-200 shadow-sm dark:bg-gray-900 lg:block dark:border-gray-800"
+  >
+    <div class="px-0 lg:px-6">
+      <div class="flex items-center">
+        <ul class="flex flex-col mt-0 w-full text-sm font-medium lg:flex-row">
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.CUSTOMER"
+              routerLink="/home"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >Home</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.CUSTOMER"
+              routerLink="/history"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >History</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.ADMINISTRATOR"
+              routerLink="/adminorders"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >AdminPage</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.ADMINISTRATOR"
+              routerLink="/historyadmin"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >History</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.ADMINISTRATOR"
+              routerLink="/admincodes"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >CompanyCodes</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              routerLink="/requests"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >Order Requests</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              routerLink="/new"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >New Order</a
+            >
+          </li>
+          <li
+            class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+          >
+            <a
+              *ngIf="account && account.role === Role.ADMINISTRATOR"
+              routerLink="/account-requests"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+              >Accounts</a
+            >
+          </li>
+          <ng-container *ngIf="orderDetails() !== 'nil'">
+            <li
+              class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+            >
+              <a
+                routerLink="/orders/{{ orderDetails() }}"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+                >{{ orderDetails() }}</a
+              >
+            </li>
+          </ng-container>
+          <ng-container *ngIf="orderAdminDetails() !== 'nil'">
+            <li
+              class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+            >
+              <a
+                routerLink="/orders/{{ extractCustomerCode() }}/{{
+                  orderAdminDetails()
+                }}"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+                >{{ orderAdminDetails() }}</a
+              >
+            </li>
+          </ng-container>
+          <ng-container *ngIf="requestDetails() !== 'nil'">
+            <li
+              class="block border-b dark:border-gray-700 lg:inline lg:border-b-0"
+            >
+              <a
+                routerLink="/requests/{{ requestDetails() }}"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600"
+                >{{ requestDetails() }}</a
+              >
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

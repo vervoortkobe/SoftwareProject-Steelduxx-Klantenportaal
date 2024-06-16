@@ -1,0 +1,922 @@
+<div class="background"></div>
+
+<!-- ---------------------- MODAL ADD PRODUCT ---------------------- -->
+<ng-container *ngIf="showModalValue">
+  <div
+    style="display: block"
+    id="addproduct-modal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="modal hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+  >
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <div
+        class="card w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+      >
+        <form action="#" ngNativeValidate>
+          <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+            Product Details
+          </h5>
+          <button
+            (click)="toggleModal()"
+            type="button"
+            class="close end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+
+          <div clas="modal-body">
+            <div class="div_name">
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Name <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                #name
+                name="name"
+                id="name"
+                class="name bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Galvanized steel pipes"
+                autofocus
+                required
+              />
+            </div>
+
+            <div class="flexdiv">
+              <div class="div_hsCode">
+                <label
+                  for="hsCode"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >HS-Code</label
+                >
+                <input
+                  type="text"
+                  #hsCode
+                  name="hsCode"
+                  id="hsCode"
+                  class="hsCode bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="28763515"
+                />
+              </div>
+
+              <div class="div_quantity">
+                <label
+                  for="quantity"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Quantity</label
+                >
+                <input
+                  type="number"
+                  #quantity
+                  name="quantity"
+                  id="quantity"
+                  class="quantity bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="12"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div class="flexdiv">
+              <div class="div_weight">
+                <label
+                  for="weight"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Weight (kg)</label
+                >
+                <input
+                  type="number"
+                  #weight
+                  name="weight"
+                  id="weight"
+                  class="weight bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="12457000"
+                  min="0"
+                />
+              </div>
+
+              <div class="div_containerNr">
+                <label
+                  for="containerNr"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Container Number</label
+                >
+                <input
+                  type="text"
+                  #containerNr
+                  name="containerNr"
+                  id="containerNr"
+                  class="containerNr bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="BBAC8315546"
+                />
+              </div>
+            </div>
+            <div class="flexdiv">
+              <div class="div_containerSize">
+                <label
+                  for="containerSize"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Container Size</label
+                >
+                <input
+                  type="number"
+                  #containerSize
+                  name="containerSize"
+                  id="containerSize"
+                  class="containerSize bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="40"
+                  min="0"
+                />
+              </div>
+
+              <div class="div_containerType">
+                <label
+                  for="containerType"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Container Type</label
+                >
+                <select
+                  [(ngModel)]="containerType"
+                  id="containerType"
+                  name="containerType"
+                  class="containerType bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="OT" [selected]="true">OPEN TOP (OT)</option>
+                  <option value="FT">FLAT (FT)</option>
+                  <option value="DV">DRY VAN (DV)</option>
+                  <option value="HC">HIGH CUBE (HC)</option>
+                  <option value="RF">REEFER (RF)</option>
+                </select>
+              </div>
+            </div>
+
+            <button
+              (click)="
+                addProduct(
+                  hsCode.value,
+                  name.value,
+                  quantity.value,
+                  weight.value,
+                  containerNr.value,
+                  containerSize.value,
+                  containerType
+                )
+              "
+              type="submit"
+              class="modal-submit w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Add product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- MODAL CONFIRMATION -->
+<ng-container *ngIf="showConfirmationValue">
+  <div
+    id="confirmation-modal"
+    class="confirmation-modal overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+  >
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <div class="card relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <button
+          (click)="toggleConfirmation()"
+          type="button"
+          class="close absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <svg
+            class="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="p-4 md:p-5 text-center">
+          <svg
+            class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+            Are you sure you want to submit this product?
+          </h3>
+          <button
+            type="button"
+            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+          >
+            Yes, I'm sure!
+          </button>
+          <button
+            (click)="toggleConfirmation()"
+            type="button"
+            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            No, cancel!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div
+  class="flex"
+  [ngStyle]="{
+    filter: showModalValue || showConfirmationValue ? 'blur(5px)' : 'blur(0)',
+    transition: '.3s filter linear',
+    'pointer-events': showModalValue || showConfirmationValue ? 'none' : 'auto',
+    'user-select': showModalValue || showConfirmationValue ? 'none' : 'auto'
+  }"
+>
+  <div class="orderdetails">
+    <ng-container *ngIf="!edit">
+      <div class="left table">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Detail</th>
+                <th scope="col" class="px-6 py-3">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  TransportType
+                </th>
+                <td class="px-6 py-4">
+                  {{ orderRequest.transportType || "/" }}
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Customer Code
+                </th>
+                <td class="px-6 py-4">
+                  {{ orderRequest.customerCode || "/" }}
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Customer Reference
+                </th>
+                <td class="px-6 py-4">
+                  {{ orderRequest.customerReferenceNumber || "/" }}
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Port Code
+                </th>
+                <td class="px-6 py-4">
+                  {{ orderRequest.portCode || "/" }}
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Cargo Type
+                </th>
+                <td class="px-6 py-4">
+                  {{ orderRequest.cargoType || "/" }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttons" [style.margin-top]="edit ? '10.2vh' : ''">
+          <button
+            *ngIf="this.currentUser.role === Role.ADMINISTRATOR"
+            (click)="approve(orderRequest.id)"
+            type="submit"
+            class="approve w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              /></svg
+            >Approve
+          </button>
+
+          <button
+            (click)="toggleEdit()"
+            type="button"
+            class="edit w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+              /></svg
+            >Edit
+          </button>
+
+          <button
+            *ngIf="this.currentUser.role === Role.ADMINISTRATOR"
+            (click)="deny(orderRequest.id)"
+            type="submit"
+            class="deny w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              /></svg
+            >Deny
+          </button>
+        </div>
+      </div>
+
+      <div class="right table">
+        <div
+          class="righttablediv relative overflow-x-auto shadow-md sm:rounded-lg"
+        >
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">HsCode</th>
+                <th scope="col" class="px-6 py-3">
+                  Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </th>
+                <th scope="col" class="px-6 py-3">Quanity</th>
+                <th scope="col" class="px-6 py-3">Weight (ton)</th>
+                <th scope="col" class="px-6 py-3">ContainerNr</th>
+                <th scope="col" class="px-6 py-3">Size</th>
+                <th scope="col" class="px-6 py-3">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let product of products; let i = index">
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {{ product.hsCode || "/" }}
+                  </th>
+                  <td class="px-6 py-4">
+                    {{ product.name || "/" }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ product.quantity || "/" }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ product.weight / 1000 + " ton" }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ product.containerNumber || "/" }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ product.containerSize || "/" }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ product.containerType || "/" }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="edit">
+      <div class="left table">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Detail</th>
+                <th scope="col" class="px-6 py-3">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  TransportType
+                </th>
+                <td class="px-6 py-4">
+                  <select
+                    *ngIf="edit"
+                    [(ngModel)]="transportType"
+                    id="transportType"
+                    (change)="onTransportTypeChange()"
+                    name="transportType"
+                    class="transportType bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  >
+                    <option
+                      value="IMPORT"
+                      [selected]="
+                        (edit && orderRequest.transportType === 'IMPORT') ||
+                        (edit && !orderRequest.transportType)
+                      "
+                    >
+                      IMPORT
+                    </option>
+                    <option
+                      value="EXPORT"
+                      [selected]="
+                        edit && orderRequest.transportType === 'EXPORT'
+                      "
+                    >
+                      EXPORT
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Customer Reference
+                </th>
+                <td class="px-6 py-4">
+                  <input
+                    type="text"
+                    [(ngModel)]="customerReferenceNumber"
+                    (change)="
+                      onCustomerReferenceNumberChange(customerReferenceNumber)
+                    "
+                    name="customerReferenceNumber"
+                    id="customerReferenceNumber"
+                    class="customerReferenceNumber bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="{{
+                      orderRequest.customerReferenceNumber || '/'
+                    }}"
+                    value="{{ orderRequest.customerReferenceNumber || '/' }}"
+                    required
+                  />
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Port Code
+                </th>
+                <td class="px-6 py-4">
+                  <input
+                    type="text"
+                    [(ngModel)]="portCode"
+                    (change)="onPortCodeChange(portCode)"
+                    name="portCode"
+                    id="portCode"
+                    class="portCode bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="{{ orderRequest.portCode || '/' }}"
+                    value="{{ orderRequest.portCode || '/' }}"
+                    required
+                  />
+                </td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Cargo Type
+                </th>
+                <td class="px-6 py-4">
+                  <select
+                    *ngIf="edit"
+                    [(ngModel)]="cargoType"
+                    id="cargoType"
+                    (change)="onCargoTypeChange(cargoType)"
+                    name="transportType"
+                    class="cargoType bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ng-untouched ng-pristine ng-valid"
+                  >
+                    <option
+                      value="CONTAINER"
+                      [selected]="this.edit && this.cargoType === 'CONTAINER'"
+                    >
+                      CONTAINER
+                    </option>
+                    <option
+                      value="BULK"
+                      [selected]="this.edit && this.cargoType == 'BULK'"
+                    >
+                      BULK
+                    </option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttons" [style.margin-top]="edit ? '10.2vh' : ''">
+          <button
+            (click)="
+              saveEdit(
+                id,
+                customerCode,
+                transportType,
+                customerReferenceNumber,
+                portCode,
+                cargoType,
+                products
+              )
+            "
+            type="button"
+            class="save w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              /></svg
+            >Save
+          </button>
+
+          <button
+            (click)="toggleEdit()"
+            type="button"
+            class="cancel w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <svg
+              style="color: white"
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              /></svg
+            >Cancel
+          </button>
+        </div>
+      </div>
+
+      <div class="right table">
+        <div
+          class="righttablediv relative overflow-x-auto shadow-md sm:rounded-lg"
+        >
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">HsCode</th>
+                <th scope="col" class="px-6 py-3">
+                  Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </th>
+                <th scope="col" class="px-6 py-3">Quanity</th>
+                <th scope="col" class="px-6 py-3">Weight (ton)</th>
+                <th scope="col" class="px-6 py-3">ContainerNr</th>
+                <th scope="col" class="px-6 py-3">Size</th>
+                <th scope="col" class="px-6 py-3">Type</th>
+                <th scope="col" class="px-6 py-3">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="addproduct-modal-tr border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <button
+                    (click)="toggleModal()"
+                    class="addproduct-modal modalbutton block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                  >
+                    Add a new product
+                  </button>
+                </th>
+                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4"></td>
+                <td class="px-6 py-4"></td>
+                <td
+                  class="px-6 py-4"
+                  [ngStyle]="{
+                    'padding-right': this.products.length > 0 ? '1.5vw;' : '0;'
+                  }"
+                >
+                  <a
+                    (click)="toggleModal()"
+                    class="addproduct-modal font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    <img
+                      src="assets/img/plus.svg"
+                      alt="Add product plus sign"
+                    />
+                  </a>
+                </td>
+              </tr>
+
+              <ng-container *ngFor="let product of products; let i = index">
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <input
+                      type="text"
+                      name="hsCode"
+                      id="hsCode"
+                      (change)="onProductDetailChange(i, 'hsCode', $event)"
+                      class="hsCode bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="{{ product.hsCode || '/' }}"
+                      value="{{ product.hsCode || '/' }}"
+                      required
+                    />
+                  </th>
+                  <td class="px-6 py-4 mgl">
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      (change)="onProductDetailChange(i, 'name', $event)"
+                      class="name bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="{{ product.name || '/' }}"
+                      value="{{ product.name || '/' }}"
+                      required
+                    />
+                  </td>
+                  <td class="px-6 py-4g mgl">
+                    <input
+                      type="number"
+                      name="quantity"
+                      id="quantity"
+                      (change)="onProductDetailChange(i, 'quantity', $event)"
+                      class="quantity bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="{{ product.quantity || '/' }}"
+                      value="{{ product.quantity || '/' }}"
+                      required
+                    />
+                  </td>
+                  <td class="px-6 py-4 mgl">
+                    <input
+                      type="number"
+                      name="weight"
+                      id="weight"
+                      (change)="onProductDetailChange(i, 'weight', $event)"
+                      class="weight bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="{{ product.weight / 1000 + ' ton' }}"
+                      value="{{ product.weight / 1000 }}"
+                      required
+                    />
+                  </td>
+                  <td class="px-6 py-4 mgl">
+                    <input
+                      type="text"
+                      name="containerNumber"
+                      id="containerNumber"
+                      (change)="
+                        onProductDetailChange(i, 'containerNumber', $event)
+                      "
+                      class="containerNumber bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      placeholder="{{ product.containerNumber || '/' }}"
+                      value="{{ product.containerNumber || '/' }}"
+                    />
+                  </td>
+                  <td class="px-6 py-4 mgl">
+                    <select
+                      *ngIf="edit"
+                      name="containerSize"
+                      id="containerSize"
+                      (change)="
+                        onProductDetailChange(i, 'containerSize', $event)
+                      "
+                      class="containerSize bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      <option
+                        value="20"
+                        [selected]="
+                          (edit && product.containerSize === +'20') ||
+                          (edit && !orderRequest.containerSize)
+                        "
+                      >
+                        20
+                      </option>
+                      <option
+                        value="40"
+                        [selected]="edit && product.containerSize === +'40'"
+                      >
+                        40
+                      </option>
+                    </select>
+                  </td>
+                  <td class="px-6 py-4 mgl">
+                    <select
+                      *ngIf="edit"
+                      name="containerType"
+                      id="containerType"
+                      (change)="
+                        onProductDetailChange(i, 'containerType', $event)
+                      "
+                      class="containerType bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      <option
+                        *ngIf="cargoType === 'BULK'"
+                        value=""
+                        [selected]="
+                          cargoType === 'BULK' &&
+                          edit &&
+                          product.containerType === null
+                        "
+                      ></option>
+                      <option
+                        value="OT"
+                        [selected]="edit && product.containerType === 'OT'"
+                      >
+                        OT (OPEN TOP)
+                      </option>
+                      <option
+                        value="FT"
+                        [selected]="edit && product.containerType === 'FT'"
+                      >
+                        FT (FLAT)
+                      </option>
+                      <option
+                        value="DV"
+                        [selected]="edit && product.containerType === 'DV'"
+                      >
+                        DV (DRY VAN)
+                      </option>
+                      <option
+                        value="HC"
+                        [selected]="edit && product.containerType === 'HC'"
+                      >
+                        HC (HIGH CUBE)
+                      </option>
+                      <option
+                        value="RF"
+                        [selected]="edit && product.containerType === 'RF'"
+                      >
+                        RF (REEFER)
+                      </option>
+                    </select>
+                  </td>
+                  <td class="px-6 py-4">
+                    <a
+                      (click)="removeProduct(product.id)"
+                      class="addproduct-modal font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      <img
+                        src="assets/img/minus.svg"
+                        alt="Remove product minus sign"
+                      />
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

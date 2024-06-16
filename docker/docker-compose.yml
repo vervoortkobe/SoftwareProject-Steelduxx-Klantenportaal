@@ -1,0 +1,80 @@
+version: "3"
+services:
+  backend:
+    image: backend:DEFAULT
+    restart: "always"
+    volumes:
+      - "./backend/uploads:/app/uploads"
+    build:
+      context: ../api
+      dockerfile: ../docker/backend/Dockerfile
+      args:
+        DOCKER_DEFAULT_PLATFORM: ${DOCKER_DEFAULT_PLATFORM}
+    environment:
+      #JAVA
+      spring.datasource.url: ${DATASOURCE_URL}
+      spring.datasource.username: ${MYSQL_USER}
+      spring.datasource.password: ${MYSQL_PASSWORD}
+      server.servlet.context-path: ${PATH_PREFIX}
+      DOMAIN: ${DOMAIN}
+
+      #CREDENTIALS
+      SECRET_KEY: ${SECRET_KEY}
+      API_SECRET_GROUP: ${API_SECRET_GROUP}
+      API_SECRET_KEY: ${API_SECRET_KEY}
+      MAIL_ADDRESS: ${MAIL_ADDRESS}
+      MAIL_PWD: ${MAIL_PWD}
+
+      #SENTRY
+      SENTRY_DSN: ${SENTRY_DSN}
+      SENTRY_ENABLED: ${SENTRY_ENABLED}
+      SENTRY_ENVIRONMENT: ${SENTRY_ENVIRONMENT}
+      SENTRY_SERVERNAME: ${SENTRY_SERVERNAME}
+    networks:
+      - traefik
+      - database
+    container_name: backend-DEFAULT
+    depends_on:
+      - database
+
+  frontend:
+    restart: "always"
+    image: frontend:DEFAULT
+    volumes:
+      - "./frontend/nginx.conf:/etc/nginx/nginx.conf:ro"
+    build:
+      context: ../FrontEnd/project
+      dockerfile: ../../docker/frontend/Dockerfile
+      args:
+        DOCKER_DEFAULT_PLATFORM: ${DOCKER_DEFAULT_PLATFORM}
+    networks:
+      - backend
+      - traefik
+    container_name: frontend-DEFAULT
+    depends_on:
+      - backend
+      - database
+
+  database:
+    restart: "always"
+    platform: ${DOCKER_DEFAULT_PLATFORM}
+    image: mysql
+    volumes:
+      - "db-volume:/var/lib/mysql"
+      - "../Database/my.cnf:/etc/my.cnf"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
+      - "MYSQL_DATABASE=db_klantenportaal"
+    networks:
+      - database
+    container_name: database-DEFAULT
+
+volumes:
+  db-volume:
+
+networks:
+  traefik:
+    external: true
+    name: traefik
+  backend:
+  database:

@@ -1,0 +1,543 @@
+<!--TESTING-->
+<section class="py-8 bg-white dark:bg-gray-900 lg:py-0">
+  <div class="lg:flex">
+    <div class="steelduxx hidden max-w-md p-12 lg:h-screen lg:block">
+      <div class="flex justify-center">
+        <img
+          class="w-20 h-20 mb-4"
+          src="./assets/img/logo-white.svg"
+          alt="logo"
+        />
+      </div>
+    </div>
+    <div class="flex items-center mx-auto md:w-[42rem] px-4 md:px-8 xl:px-0">
+      <div class="w-full">
+        <div class="flex items-center justify-center mb-8 space-x-4 lg:hidden">
+          <a href="#" class="flex items-center text-2xl font-semibold">
+            <img class="w-20 h-20 mb-4" src="./assets/img/logo.svg" />
+          </a>
+        </div>
+        <ol
+          class="flex items-center mb-6 text-sm font-medium text-center text-gray-500 dark:text-gray-400 lg:mb-12 sm:text-base justify-center"
+        >
+          <li
+            *ngFor="let currentStep of stepsString; let i = index"
+            [class]="
+              (step >= i
+                ? 'flex items-center text-primary-600 dark:text-primary-500'
+                : 'flex items-center') +
+              (stepsString.length - 1 != i
+                ? ' after:w-12 after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700'
+                : '')
+            "
+          >
+            <div
+              (click)="step >= i ? goToStep(i) : ''"
+              [class]="
+                (step >= i ? 'clickable ' : '') +
+                'flex items-center sm:block sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500'
+              "
+            >
+              <svg
+                *ngIf="step > i"
+                class="w-4 h-4 mr-2 sm:mb-2 sm:w-6 sm:h-6 sm:mx-auto"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <div *ngIf="step <= i" class="mr-2 sm:mb-2 sm:mx-auto">
+                {{ i + 1 }}
+              </div>
+              {{ insertSpaces(currentStep) }}
+            </div>
+          </li>
+        </ol>
+        <h1
+          *ngIf="step != 3"
+          class="mb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:mb-6 leding-tight dark:text-white"
+        >
+          {{ insertSpaces(stepsString[step]) }}
+        </h1>
+        <div [class]="step == 0 ? 'grid gap-5 my-6 sm:grid-cols-1' : 'hidden'">
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Your email <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name@company.com"
+              required=""
+              [(ngModel)]="account.email"
+            />
+            <p
+              [hidden]="!emailError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ emailError }}
+            </p>
+          </div>
+          <div>
+            <label
+              for="password"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Password <span class="required">*</span></label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="••••••••"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+              [(ngModel)]="account.password"
+            />
+            <p
+              [hidden]="!passwordError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ passwordError }}
+            </p>
+          </div>
+          <div>
+            <label
+              for="confirm-password"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Confirm password <span class="required">*</span></label
+            >
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              placeholder="••••••••"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required=""
+              [(ngModel)]="confirmPassword"
+            />
+            <p
+              [hidden]="!passwordRepeatError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ passwordRepeatError }}
+            </p>
+          </div>
+          <div class="mb-6 space-y-3 hidden">
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="terms"
+                  aria-describedby="terms"
+                  type="checkbox"
+                  class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                  required=""
+                />
+              </div>
+              <div class="ml-3 text-sm">
+                <label
+                  for="terms"
+                  class="font-light text-gray-500 dark:text-gray-300"
+                  >By signing up you agree to the
+                  <a
+                    class="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                    href="#"
+                    >Terms of Use</a
+                  >
+                  and
+                  <a
+                    class="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                    href="#"
+                    >Privacy Policy</a
+                  >.</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [class]="step == 1 ? 'grid gap-4 mb-4 grid-cols-1' : 'hidden'">
+          <div>
+            <label
+              for="company_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Company name: <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              name="company_name"
+              id="company_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Company NV"
+              required=""
+              [(ngModel)]="account_information.company_name"
+            />
+            <p
+              [hidden]="!companyError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ companyError }}
+            </p>
+          </div>
+          <div>
+            <label
+              for="country"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Country: <span class="required">*</span></label
+            >
+            <select
+              id="countries"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              [(ngModel)]="account_information.countryId"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option selected>Choose a country</option>
+              <option
+                *ngFor="let country of countries"
+                [value]="country.number"
+              >
+                {{ country.nicename }}
+              </option>
+            </select>
+            <p
+              [hidden]="!countryError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ countryError }}
+            </p>
+          </div>
+          <hr />
+          <div>
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Company representative: <span class="required">*</span></label
+            >
+            <div class="grid ap-6 md:grid-cols-2">
+              <input
+                type="text"
+                name="first_name"
+                id="first_name"
+                class="mr-3 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="First name"
+                required=""
+                [(ngModel)]="account_information.contact_firstname"
+              />
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                class="ml-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Last name"
+                required=""
+                [(ngModel)]="account_information.contact_lastname"
+              />
+            </div>
+            <p
+              [hidden]="!contact_firstnameError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ contact_firstnameError }}
+            </p>
+            <p
+              [hidden]="!contact_lastnameError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ contact_lastnameError }}
+            </p>
+          </div>
+
+          <div>
+            <label
+              for="phone-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Phone number:</label
+            >
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <svg
+                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 19 18"
+                >
+                  <path
+                    d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="phone-input"
+                aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                pattern="^[1-9]{1}[0-9]{3,14}$"
+                placeholder="32412345678"
+                required=""
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="account_information.contact_telephone"
+              />
+            </div>
+            <p
+              [hidden]="!contact_phonenumberError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ contact_phonenumberError }}
+            </p>
+          </div>
+        </div>
+        <div [class]="step == 2 ? 'grid gap-4 mb-4 grid-cols-1' : 'hidden'">
+          <div>
+            <label
+              for="street"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Address: <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              name="street"
+              id="street"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Placeholderstreet"
+              required=""
+              [(ngModel)]="account_information.street"
+            />
+            <p
+              [hidden]="!streetError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ streetError }}
+            </p>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="street"
+              id="street"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Secondarystreet"
+              required=""
+              [(ngModel)]="account_information.street_secondary"
+            />
+            <p
+              [hidden]="!boxError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ street_secondaryError }}
+            </p>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div>
+              <label
+                for="postal_code"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Postal code: <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                name="postal_code"
+                id="postal_code"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="2000"
+                required=""
+                [(ngModel)]="account_information.postal_code"
+              />
+              <p
+                [hidden]="!postalCodeError"
+                id="standard_error_help"
+                class="mt-2 text-xs text-red-600 dark:text-red-400"
+              >
+                {{ postalCodeError }}
+              </p>
+            </div>
+            <div>
+              <label
+                for="city"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >City: <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                name="city"
+                id="city"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Antwerp"
+                required=""
+                [(ngModel)]="account_information.city"
+              />
+              <p
+                [hidden]="!cityError"
+                id="standard_error_help"
+                class="mt-2 text-xs text-red-600 dark:text-red-400"
+              >
+                {{ cityError }}
+              </p>
+            </div>
+          </div>
+          <div>
+            <div class="grid gap-6 md:grid-cols-2">
+              <div>
+                <label
+                  for="city"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Number: <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  name="number"
+                  id="number"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="12"
+                  required=""
+                  [(ngModel)]="account_information.street_number"
+                />
+                <p
+                  [hidden]="!numberEror"
+                  id="standard_error_help"
+                  class="mt-2 text-xs text-red-600 dark:text-red-400"
+                >
+                  {{ numberEror }}
+                </p>
+              </div>
+              <div>
+                <label
+                  for="box_number"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Box:</label
+                >
+                <input
+                  type="text"
+                  name="box_number"
+                  id="box_number"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="22A"
+                  required=""
+                  [(ngModel)]="account_information.box"
+                />
+                <p
+                  [hidden]="!boxError"
+                  id="standard_error_help"
+                  class="mt-2 text-xs text-red-600 dark:text-red-400"
+                >
+                  {{ boxError }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div>
+            <label
+              for="vat"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >VAT-number:</label
+            >
+            <input
+              type="text"
+              name="vat"
+              id="vat"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="BE0123456789"
+              required=""
+              [(ngModel)]="account_information.btw_number"
+            />
+            <p
+              [hidden]="!vatError"
+              id="standard_error_help"
+              class="mt-2 text-xs text-red-600 dark:text-red-400"
+            >
+              {{ vatError }}
+            </p>
+          </div>
+          <p
+            [hidden]="!generalError"
+            id="standard_error_help"
+            class="mt-2 text-xs text-red-600 dark:text-red-400"
+          >
+            {{ generalError }}
+          </p>
+        </div>
+        <div
+          [class]="step == 3 ? 'my-5 grid gap-4 mb-4 grid-cols-1' : 'hidden'"
+        >
+          <h3
+            class="w-full text-center text-xl font-medium text-gray-900 dark:text-white"
+          >
+            Thank you for registering.
+          </h3>
+          <p
+            class="text-center leading-relaxed text-gray-500 dark:text-gray-400"
+          >
+            A Steelduxx employee will review your registration.
+          </p>
+          <p
+            class="text-center leading-relaxed text-gray-500 dark:text-gray-400"
+          >
+            Once you have been approved, you will receive an email with further
+            instructions.
+          </p>
+        </div>
+        <hr *ngIf="step != 3" />
+        <br />
+        <div class="flex" *ngIf="step < stepsString.length - 1">
+          <hr />
+          <button
+            (click)="previousStep()"
+            [class]="
+              step <= 0
+                ? 'hidden '
+                : '' +
+                  'text-center items-center w-full py-2.5 sm:py-3.5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 mr-5'
+            "
+          >
+            Prev: {{ getPreviousStep() }}
+          </button>
+          <button
+            type="submit"
+            (click)="nextStep()"
+            [class]="
+              'steelduxbutton w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 sm:py-3.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
+            "
+          >
+            Next: {{ getNextStep() }}
+          </button>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <p
+          class="text-center text-sm font-light text-gray-500 dark:text-gray-400"
+        >
+          {{ step != 3 ? "Already have an account?" : "" }}
+          <a
+            href="/login"
+            class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+            >Login here</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Block end -->

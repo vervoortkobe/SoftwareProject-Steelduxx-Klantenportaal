@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: backend:TEST
+    container_name: backend-TEST
+    labels:
+      - "traefik.http.routers.backend_TEST.rule=Host(`${PROJECT_HOST_TEST}`) && PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.backend_TEST.tls=true"
+      - "traefik.http.routers.backend_TEST.tls.certresolver=letsencrypt"
+    environment:
+      - SENTRY_ENVIRONMENT=test
+      - SENTRY_SERVERNAME=${PROJECT_HOST_TEST}
+      - DOMAIN=${PROJECT_HOST_TEST}
+
+  frontend:
+    image: frontend:TEST
+    container_name: frontend-TEST
+    labels:
+      - "traefik.http.routers.frontend_TEST.rule=Host(`${PROJECT_HOST_TEST}`) && !PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.frontend_TEST.tls=true"
+      - "traefik.http.routers.frontend_TEST.tls.certresolver=letsencrypt"
+
+  database:
+    ports:
+      - 3308:3306
+    volumes:
+      - "db-volume-TEST:/var/lib/mysql"
+    container_name: database-TEST
+
+volumes:
+  db-volume-TEST:

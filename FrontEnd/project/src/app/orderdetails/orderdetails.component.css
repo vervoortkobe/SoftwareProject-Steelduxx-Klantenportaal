@@ -1,0 +1,128 @@
+.orderdetails {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, .4);
+  padding: 2rem;
+}
+
+.dashboard {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.above,
+.middle {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.below {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  gap: 1vw;
+}
+
+.middle{
+  padding-top: 2vh;
+}
+
+.middle .table{
+  width: 100%;
+}
+
+.middle .right,
+.below .right {
+  height: 45vh;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  height: auto;
+}
+
+.table tr .py-4 {
+  padding-top: 1.55vh !important;
+  padding-bottom: 1.55vh !important;
+}
+
+.middle .downloads,
+.below .downloads,
+.flex .orderdetails .map {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.above .left,
+.middle .left,
+.below .right {
+  width: 26vw;
+}
+
+.above .right,
+.middle .right,
+.below .left {
+  /* .downloads */
+  width: 55vw;
+  max-width: none;
+}
+
+/* .map */
+.above .right {
+  height: 76vh;
+}
+
+.above .left {
+  margin-top: 2vh;
+  margin-left: 2vh;
+}
+
+.above .right {
+  margin-top: 2vh;
+  margin-right: 2vh;
+}
+
+.below .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+tr:hover,
+.card:hover {
+  background-color: #e6e6e6;
+}
+
+canvas {
+  border-radius: 10px;
+}
+
+.progress {
+  margin-top: 2.5vh;
+}
+
+.progress ol li svg path {
+  color: #ffffff;
+}
+
+.bg-blue-100 {
+  background-color: rgb(26 86 219 / var(--tw-bg-opacity));
+}
+
+.after\:border-blue-100::after {
+  border-color: rgb(26 86 219 / var(--tw-bg-opacity));
+}
+
+.bg-gray-100 {
+  background-color: #e6e6e6;
+}
+
+.after\:border-gray-100::after {
+  border-color: #e6e6e6;
+}

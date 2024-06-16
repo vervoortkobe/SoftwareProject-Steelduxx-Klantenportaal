@@ -1,0 +1,82 @@
+<div class="background"></div>
+
+<div class="flex">
+  <div class="table" *ngIf="!selectedCustomerCode">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lga">
+      <ul class="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <li *ngFor="let code of pagedCompanyCodes" (click)="getOrdersByCustomerCode(code)"
+          class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 px-6 py-3">
+          <b>{{ code }}</b>
+        </li>
+      </ul>
+      <mat-paginator [length]="companyCodes.length" [pageSize]="pageSizeCompanyCodes"
+        (page)="onPageChangeCompanyCodes($event)">
+      </mat-paginator>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCustomerCode" class="order">
+
+    <button (click)="selectedCustomerCode = undefined" type="submit"
+      class="backbutton w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M100,15a85,85,0,1,0,85,85A84.93,84.93,0,0,0,100,15Zm0,150a65,65,0,1,1,65-65A64.87,64.87,0,0,1,100,165ZM116.5,57.5a9.67,9.67,0,0,0-14,0L74,86a19.92,19.92,0,0,0,0,28.5L102.5,143a9.9,9.9,0,0,0,14-14l-28-29L117,71.5C120.5,68,120.5,61.5,116.5,57.5Z" />
+      </svg>Back</button>
+
+    <div class="table">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Customer Code
+              </th>
+              <th scope="col" class="px-6 py-3">
+                State
+              </th>
+              <th scope="col" class="px-6 py-3">
+                RefNumber
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Origin Port
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Destination Port
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ETA
+              </th>
+              <th scope="col" class="px-6 py-3">
+                ETS
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Weight (ton)
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Containers
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of pagedFilteredOrders"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="px-6 py-4">{{ order.customerCode }}</td>
+              <td class="px-6 py-4">{{ order.state }}</td>
+              <td class="px-6 py-4">{{ order.referenceNumber }}</td>
+              <td class="px-6 py-4">{{ order.portOfOriginCode }}</td>
+              <td class="px-6 py-4">{{ order.portOfDestinationCode }}</td>
+              <td class="px-6 py-4">{{ order.eta }}</td>
+              <td class="px-6 py-4">{{ order.ets }}</td>
+              <td class="px-6 py-4">{{ order.totalWeight }}</td>
+              <td class="px-6 py-4">{{ order.totalContainers }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator [length]="filteredOrders.length" [pageSize]="pageSizeOrders" (page)="onPageChangeOrders($event)">
+        </mat-paginator>
+
+      </div>
+    </div>
+  </div>
+</div>

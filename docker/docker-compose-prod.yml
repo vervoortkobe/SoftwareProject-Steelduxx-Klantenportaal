@@ -1,0 +1,25 @@
+services:
+  backend:
+    image: backend:PRODUCTION
+    container_name: backend-PRODUCTION
+    labels:
+      - "traefik.http.routers.backend_PRODUCTION.rule=Host(`${PROJECT_HOST}`) && PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.backend_PRODUCTION.tls=true"
+      - "traefik.http.routers.backend_PRODUCTION.tls.certresolver=letsencrypt"
+    environment:
+      - SENTRY_ENVIRONMENT=production
+      - SENTRY_SERVERNAME=s${PROJECT_HOST}
+      - DOMAIN=${PROJECT_HOST}
+
+  frontend:
+    image: frontend:PRODUCTION
+    container_name: frontend-PRODUCTION
+    labels:
+      - "traefik.http.routers.frontend_PRODUCTION.rule=Host(`${PROJECT_HOST}`) && !PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.frontend_PRODUCTION.tls=true"
+      - "traefik.http.routers.frontend_PRODUCTION.tls.certresolver=letsencrypt"
+
+  database:
+    ports:
+      - 3306:3306
+    container_name: database-PRODUCTION

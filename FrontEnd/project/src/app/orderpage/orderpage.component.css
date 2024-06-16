@@ -1,0 +1,125 @@
+.flex {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+table {
+  width: 93vw;
+}
+
+.table tr .py-4 {
+  padding-top: 1.55vh !important;
+  padding-bottom: 1.55vh !important;
+}
+
+:host ::ng-deep.mat-mdc-paginator-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  height: 2vh;
+  position: absolute;
+}
+
+:host ::ng-deep.mat-mdc-paginator-page-size {
+  width: 10vw;
+}
+
+tr:hover,
+.card:hover,
+.search select:hover,
+.search input:hover {
+  background-color: #e6e6e6;
+}
+
+
+
+th a {
+  display: inline-flex;
+}
+
+.sm\:rounded-lg {
+  border-radius: 0.5rem;
+  height: 72.9vh;
+}
+
+.search select {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+}
+
+.search input {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.search {
+  display: flex;
+  margin-left: 3.2vw;
+  margin-top: 1.5vw;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  width: 93vw;
+  border-radius: 0.5rem;
+}
+
+.search select:hover {
+  cursor: pointer;
+}
+
+label {
+  display: inline-block;
+  margin-top: 0.4rem;
+  margin-right: 0.5rem;
+  margin-left: 87vw;
+  font-weight: bold;
+  position: absolute;
+}
+
+.sortable {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sortable svg {
+  margin-left: 0.5rem;
+}
+
+table th,
+table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table th {
+  position: relative;
+}
+
+table th span.sortable {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+table th span.sortable:hover {
+  text-decoration: underline;
+}
+
+.relative {
+  position: relative;
+}

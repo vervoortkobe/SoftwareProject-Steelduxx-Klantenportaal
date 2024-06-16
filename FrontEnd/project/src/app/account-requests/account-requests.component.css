@@ -1,0 +1,58 @@
+.flex {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+table {
+  width: 93vw;
+}
+
+.table tr .py-4 {
+  padding-top: 1.55vh !important;
+  padding-bottom: 1.55vh !important;
+}
+
+:host ::ng-deep.mat-mdc-paginator-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  height: 2vh;
+  position: absolute;
+}
+
+:host ::ng-deep.mat-mdc-paginator-page-size {
+  width: 10vw;
+}
+
+tr:hover,
+.card:hover {
+  background-color: #e6e6e6;
+}
+
+th a {
+  display: inline-flex;
+}
+
+.sm\:rounded-lg {
+  border-radius: 0.5rem;
+  height: 72.9vh;
+}
+
+.search {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  width: 93vw;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: backend:STAGING
+    container_name: backend-STAGING
+    labels:
+      - "traefik.http.routers.backend_STAGING.rule=Host(`${PROJECT_HOST_STAGING}`) && PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.backend_STAGING.tls=true"
+      - "traefik.http.routers.backend_STAGING.tls.certresolver=letsencrypt"
+    environment:
+      - SENTRY_ENVIRONMENT=staging
+      - SENTRY_SERVERNAME=${PROJECT_HOST_STAGING}
+      - DOMAIN=${PROJECT_HOST_STAGING}
+
+  frontend:
+    image: frontend:STAGING
+    container_name: frontend-STAGING
+    labels:
+      - "traefik.http.routers.frontend_STAGING.rule=Host(`${PROJECT_HOST_STAGING}`) && !PathPrefix(`${PATH_PREFIX}`)"
+      - "traefik.http.routers.frontend_STAGING.tls=true"
+      - "traefik.http.routers.frontend_STAGING.tls.certresolver=letsencrypt"
+
+  database:
+    ports:
+      - 3307:3306
+    volumes:
+      - "db-volume-STAGING:/var/lib/mysql"
+    container_name: database-STAGING
+
+volumes:
+  db-volume-STAGING:

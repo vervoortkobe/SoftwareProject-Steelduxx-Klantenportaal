@@ -1,0 +1,147 @@
+image: docker:cli
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+#BUILDING
+
+build_merge_requests:
+  stage: build
+  script:
+    - cd docker
+    - docker compose build
+      --build-arg DOCKER_DEFAULT_PLATFORM=$DOCKER_DEFAULT_PLATFORM
+      --build-arg MYSQL_PASSWORD=$MYSQL_PASSWORD
+      --build-arg MYSQL_USER=$MYSQL_USER
+      --build-arg PROJECT_HOST=localhost
+      --build-arg ENVIRONMENT=test
+      --build-arg SECRET_KEY=$SECRET_KEY
+      --build-arg SENTRY_ENABLED=false
+      --build-arg DATASOURCE_URL=$DATASOURCE_URL
+    - docker system prune -f
+  only:
+    - merge_requests
+
+build_test:
+  stage: build
+  script:
+    - docker system prune -f
+    - cd docker
+    - docker compose -f docker-compose.yml -f docker-compose-test.yml build
+      --build-arg DOCKER_DEFAULT_PLATFORM=$DOCKER_DEFAULT_PLATFORM
+      --build-arg MYSQL_PASSWORD=$MYSQL_PASSWORD
+      --build-arg MYSQL_USER=$MYSQL_USER
+      --build-arg ENVIRONMENT=test
+      --build-arg SECRET_KEY=$SECRET_KEY
+      --build-arg SENTRY_ENABLED=$SENTRY_ENABLED
+      --build-arg DATASOURCE_URL=$DATASOURCE_URL
+  only:
+    - main
+
+build_staging:
+  stage: build
+  script:
+    - docker system prune -f
+    - cd docker
+    - docker compose -f docker-compose.yml -f docker-compose-staging.yml build
+      --build-arg DOCKER_DEFAULT_PLATFORM=$DOCKER_DEFAULT_PLATFORM
+      --build-arg MYSQL_PASSWORD=$MYSQL_PASSWORD
+      --build-arg MYSQL_USER=$MYSQL_USER
+      --build-arg ENVIRONMENT=staging
+      --build-arg SECRET_KEY=$SECRET_KEY
+      --build-arg SENTRY_ENABLED=$SENTRY_ENABLED
+      --build-arg DATASOURCE_URL=$DATASOURCE_URL
+  only:
+    - main
+  when: manual
+
+build_production:
+  stage: build
+  script:
+    - docker system prune -f
+    - cd docker
+    - docker compose -f docker-compose.yml -f docker-compose-prod.yml build
+      --build-arg DOCKER_DEFAULT_PLATFORM=$DOCKER_DEFAULT_PLATFORM
+      --build-arg MYSQL_PASSWORD=$MYSQL_PASSWORD
+      --build-arg MYSQL_USER=$MYSQL_USER
+      --build-arg ENVIRONMENT=production
+      --build-arg SECRET_KEY=$SECRET_KEY
+      --build-arg SENTRY_ENABLED=$SENTRY_ENABLED
+      --build-arg DATASOURCE_URL=$DATASOURCE_URL
+  only:
+    - main
+  when: manual
+
+#DEPLOYING
+
+deploy_test:
+  stage: deploy
+  script:
+    - cd docker
+    - docker compose -p test -f docker-compose.yml -f docker-compose-test.yml up -d
+  environment:
+    name: testing
+    url: https://$PROJECT_HOST_TEST
+    on_stop: stop_test
+  needs: ["build_test"]
+  only:
+    - main
+
+stop_test:
+  stage: .post
+  script:
+    - cd docker
+    - docker compose --project-name 'test' down
+  when: manual
+  environment:
+    name: testing
+    action: stop
+
+deploy_staging:
+  stage: deploy
+  script:
+    - cd docker
+    - docker compose -p staging -f docker-compose.yml -f docker-compose-staging.yml up -d
+  environment:
+    name: staging
+    url: https://$PROJECT_HOST_STAGING
+    on_stop: stop_staging
+  only:
+    - main
+  needs: ["build_staging"]
+
+stop_staging:
+  stage: .post
+  script:
+    - cd docker
+    - docker compose --project-name 'staging' down
+  when: manual
+  environment:
+    name: staging
+    action: stop
+
+deploy_production:
+  stage: deploy
+  script:
+    - cd docker
+    - docker compose -p production -f docker-compose.yml -f docker-compose-prod.yml up -d
+  environment:
+    name: production
+    url: https://$PROJECT_HOST
+    on_stop: stop_production
+  only:
+    - main
+  needs: ["build_production"]
+
+stop_production:
+  stage: .post
+  script:
+    - cd docker
+    - docker compose --project-name 'production' down
+  when: manual
+  environment:
+    name: production
+    action: stop

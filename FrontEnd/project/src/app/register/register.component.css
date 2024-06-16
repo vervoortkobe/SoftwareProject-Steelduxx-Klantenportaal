@@ -1,0 +1,27 @@
+.steelduxbutton {
+  background-color: var(--steelduxx);
+}
+
+button:hover {
+  background-color: var(--steelduxx-hover);
+}
+
+a {
+  color: var(--steelduxx);
+}
+
+.nobackground {
+  background-color: transparent;
+}
+
+.required {
+  color: red;
+}
+
+.steelduxx {
+  background-color: var(--steelduxx);
+}
+
+.clickable {
+  cursor: pointer;
+}

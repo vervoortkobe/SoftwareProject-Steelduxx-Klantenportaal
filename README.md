@@ -195,4 +195,3 @@ For data migration, you will have to manually migrate the data to your database 
 (We recommend the MySQL database workbench built-in migration for this.)
 
 For migration: You will have to move the /docker/uploads/ folder to the new location if you want to migrate uploads.
-# SoftProj-Steelduxx-Klantenportaal

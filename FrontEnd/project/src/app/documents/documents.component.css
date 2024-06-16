@@ -1,0 +1,14 @@
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  height: auto;
+}
+
+tr:hover {
+  background-color: #e6e6e6;
+}
+
+.uploads {
+  margin-bottom: 2vh;
+}

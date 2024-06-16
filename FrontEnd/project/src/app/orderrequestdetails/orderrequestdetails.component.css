@@ -1,0 +1,217 @@
+.flex {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderdetails {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 94.2vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 2.5rem;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.table tr .py-4 {
+  padding-top: 1.55vh !important;
+  padding-bottom: 1.55vh !important;
+}
+
+.righttablediv {
+  height: 60vh;
+}
+
+tr:hover,
+.card:hover {
+  background-color: #e6e6e6;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  margin-top: 16vh;
+}
+
+.approve,
+.edit,
+.deny,
+.save,
+.cancel {
+  text-align: center;
+  padding: 0.5rem;
+  width: 8vw;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.approve svg,
+.edit svg,
+.deny svg,
+.save svg,
+.cancel svg {
+  display: inline-block;
+  color: #fff;
+}
+
+.approve,
+.save {
+  background-color: #57f287;
+}
+
+.approve:hover,
+.save:hover {
+  background-color: #31894d;
+}
+
+.deny,
+.cancel {
+  background-color: #ed4245;
+}
+
+.deny:hover,
+.cancel:hover {
+  background-color: #962a2c;
+}
+
+.table .addproduct-modal {
+  cursor: pointer;
+}
+
+#confirmation-modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 27vw;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  animation: modalAppear 0.5s ease-in-out;
+}
+
+#addproduct-modal {
+  height: 66vh;
+  display: flex !important;
+  align-self: center !important;
+  justify-self: center !important;
+  margin-top: 2vh;
+  animation: modalAppear 0.5s ease-in-out;
+}
+
+#addproduct-modal .card button[type="submit"] {
+  text-align: center;
+}
+
+.modal .card .close {
+  display: flex;
+  justify-self: right;
+  margin-top: -4vh;
+  background-color: #e6e6e6;
+}
+
+.modal .card .close:hover,
+.confirmation-modal .close {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes modalAppear {
+  from {
+    top: -200vh;
+  }
+
+  to {
+    bottom: 0vh;
+  }
+}
+
+.modal .card .flexdiv {
+  margin-top: 1vh;
+}
+
+.modal .card .modal-submit {
+  margin-top: 4vh;
+  display: flex;
+  justify-content: center;
+}
+
+.table .modalbutton {
+  width: 12vw;
+  height: 4vh;
+  text-align: center;
+  padding: 0.5vh;
+  margin-top: -2vh;
+  position: absolute;
+  background-color: #646153;
+}
+
+.left {
+  width: 29vw;
+}
+
+.right {
+  width: 59vw;
+}
+
+.flexdiv {
+  display: flex;
+  flex-flow: row;
+  gap: 1vw;
+}
+
+.disabled {
+  background-color: #d1d5db !important;
+}
+
+.table img {
+  max-width: 4vh !important;
+  width: 4vh;
+}
+
+.table img:hover {
+  filter: brightness(85%);
+}
+
+.table td {
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+.addproduct-modal-tr {
+  height: 7vh;
+}
+
+.right .px-6 {
+  padding-right: 1vw;
+}
+
+.mgl {
+  padding-left: 0vw !important;
+  margin-left: 0vw !important;
+}
+
+.right .containerSize {
+  width: 5vw;
+}
+
+.right .containerType {
+  width: 5vw;
+}
+
+.required {
+  color: red;
+}

@@ -1,0 +1,7 @@
+package edu.ap.softwareproject.api.enums;
+
+public enum HScodes {
+    _7219_FLATROLLED_PRODUCTS_OF_STAINLESS_STEEL,
+    _7218_STAINLESS_STEEL_IN_INGOTS_OR_OTHER_PRIMARY_FORMS,
+    _7223_WIRE_OF_STAINLESS_STEEL
+}

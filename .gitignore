@@ -1,0 +1,14 @@
+.vscode/
+.idea/
+.env
+builds
+traefik/ssl-certs/acme.json
+traefik/passwd
+/
+dist/
+node_modules/
+npm-debug.log
+yarn-error.log
+/docker/backend/uploads/*
+api/uploads/*
+uploads/*
